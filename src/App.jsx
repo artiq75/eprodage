@@ -1,3 +1,9 @@
+import { Header } from "./Layouts/Header";
+
 export function App() {
-  return <h1>Eprodage</h1>
+  return (
+    <div className="container">
+      <Header />
+    </div>
+  )
 }
