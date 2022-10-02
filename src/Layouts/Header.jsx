@@ -18,7 +18,7 @@ export function Header() {
     <header className="header">
       <div className="header__left">
         <img className="header__menu" src="images/icon-menu.svg" alt="" />
-        <h1>sneakers</h1>
+        <h1><img src="images/logo.svg" alt="" /></h1>
         <nav className="header__nav">
           <div className="header__nav-inner">
             <img className="header__close" src="images/icon-close.svg" alt="" />
