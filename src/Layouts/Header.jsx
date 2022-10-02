@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 export function Header() {
   useEffect(() => {
     const headerNav = document.querySelector('.header__nav')
+    const cart = document.querySelector('.cart')
     matchMedia('(min-width: 770px)').addEventListener('change', () => {
       headerNav.classList.remove('reveal')
     })
@@ -11,6 +12,9 @@ export function Header() {
     })
     document.querySelector('.header__close').addEventListener('click', () => {
       headerNav.classList.remove('reveal')
+    })
+    document.querySelector('.header__cart').addEventListener('click', () => {
+      cart.classList.toggle('reveal')
     })
   }, [])
 
