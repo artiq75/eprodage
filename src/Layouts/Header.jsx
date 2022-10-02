@@ -23,11 +23,11 @@ export function Header() {
           <div className="header__nav-inner">
             <img className="header__close" src="images/icon-close.svg" alt="" />
             <ul className="header__nav-items">
-              <li>Collections</li>
-              <li>Men</li>
-              <li>Women</li>
-              <li>About</li>
-              <li>Contact</li>
+              <li><a href="#">Collections</a></li>
+              <li><a href="#">Men</a></li>
+              <li><a href="#">Women</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
             </ul>
           </div>
         </nav>
