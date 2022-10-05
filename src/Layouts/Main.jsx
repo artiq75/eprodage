@@ -1,8 +1,30 @@
 import { useState } from 'react'
 import { Slide } from '../components/Slide'
 
-export function Main() {
+let id = 0
+
+export function Main({ onAdd }) {
   const [isClose, setIsClose] = useState(true)
+  const [quantity, setQuantity] = useState(1)
+
+  const handleIncrease = function () {
+    setQuantity(q => q + 1)
+  }
+
+  const handleDecrease = function () {
+    if (quantity < 1) {
+      setQuantity(0)
+    } else {
+      setQuantity(q => q - 1)
+    }
+  }
+
+  const handleAdd = function () {
+    onAdd({
+      index: id++,
+      quantity
+    })
+  }
 
   return (
     <main>
@@ -32,15 +54,15 @@ export function Main() {
           </div>
           <div className="product-btns">
             <div className="product-quantity">
-              <span className="product-quantity__action">
+              <span onClick={handleDecrease} className="product-quantity__action">
                 <img src="images/icon-minus.svg" alt="" />
               </span>
-              <span className="product-quantity__number">0</span>
-              <span className="product-quantity__action">
+              <span className="product-quantity__number">{quantity}</span>
+              <span onClick={handleIncrease} className="product-quantity__action">
                 <img src="images/icon-plus.svg" alt="" />
               </span>
             </div>
-            <button className="product-add">
+            <button onClick={handleAdd} className="product-add">
               <span>
                 <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
                   <path
