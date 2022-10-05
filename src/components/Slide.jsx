@@ -8,6 +8,12 @@ export function Slide({ onClose, onClick, close, incrementer }) {
   const thumbnails = useRef([])
 
   useEffect(() => {
+    thumbnails.current.forEach(thumbnail => {
+      thumbnail.addEventListener('click', onClick)
+    });
+  }, [thumbnails.current, onClick])
+
+  useEffect(() => {
     imgs.current = imgsRef.current.querySelectorAll('img')
     thumbnails.current = thumbnailsRef.current.querySelectorAll(
       '.slide-thumbnails__img'
@@ -71,12 +77,10 @@ export function Slide({ onClose, onClick, close, incrementer }) {
           </svg>{' '}
         </div>
       )}
-      <div onClick={onClick} className="slide-front">
-        {incrementer && (
-          <div className="slide-btn next" onClick={handleNext}>
-            <img src="images/icon-next.svg" alt="" />
-          </div>
-        )}
+      <div className="slide-front">
+        <div className={`slide-btn next ${incrementer ? 'reveal' : ''}`} onClick={handleNext}>
+          <img src="images/icon-next.svg" alt="" />
+        </div>
         <div ref={imgsRef} className="slide-front__imgs">
           <img
             src="images/image-product-1.jpg"
@@ -103,11 +107,9 @@ export function Slide({ onClose, onClick, close, incrementer }) {
             alt=""
           />
         </div>
-        {incrementer && (
-          <div className="slide-btn back" onClick={handleBack}>
-            <img src="images/icon-previous.svg" alt="" />
-          </div>
-        )}
+        <div className={`slide-btn back ${incrementer ? 'reveal' : ''}`} onClick={handleBack}>
+          <img src="images/icon-previous.svg" alt="" />
+        </div>
       </div>
       <div className="slide-thumbnails" ref={thumbnailsRef}>
         <div className="slide-thumbnails__img">

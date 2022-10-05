@@ -82,27 +82,44 @@ button.blank {
 
 .cart {
   display: grid;
-  gap: var(--space);
+  grid-template-rows: min-content 100%;
   position: absolute;
   min-width: 350px;
   max-width: max-content;
   top: 10%;
   right: var(--space);
-  padding: var(--space);
   min-height: 250px;
   width: calc(100% - (var(--space) * 2));
   z-index: 7;
   border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   opacity: 0;
   visibility: hidden;
   background: var(--white);
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .cart.reveal {
   opacity: 1;
   visibility: visible;
+}
+
+.cart-title,
+.cart-content {
+  padding: var(--space);
+}
+
+.cart-title {
+  color: var(--very-vark-blue);
+}
+
+.cart-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: var(--space);
+  border-top: 1px solid rgb(218, 218, 218);
 }
 
 .cart-items {
@@ -116,30 +133,15 @@ button.blank {
   gap: var(--space);
 }
 
-.cart img {
-  height: 100%;
-}
-
 .cart-item__img {
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
   border-radius: 7px;
-  overflow: hidden;
 }
 
 .cart-item__text h3 {
   font-weight: 400;
   font-size: 1rem;
-}
-
-.cart-title {
-  color: var(--very-vark-blue);
-}
-
-.seperator {
-  width: 100%;
-  height: 1px;
-  background: rgb(218, 218, 218);
 }
 
 .cart-empty {
@@ -214,8 +216,8 @@ button.blank {
 
 .header-avatar {
   display: block;
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
   border: 2px solid transparent;
   cursor: pointer;
@@ -362,7 +364,6 @@ button.blank {
 }
 
 @media screen and (min-width: 500px) {
-  
   .slide-btn {
     transform: translate3d(50%, -50%, 0);
   }
@@ -386,6 +387,10 @@ button.blank {
     top: 11%;
   }
 
+  .slide-btn:not(.reveal) {
+    display: none;
+  }
+
   .header-item {
     position: relative;
   }
@@ -399,13 +404,13 @@ button.blank {
     right: 0;
     background: var(--orange);
     opacity: 0;
-    transition: .3s;
+    transition: 0.3s;
   }
 
   .header-item:hover::before {
     opacity: 1;
   }
-  
+
   .product {
     column-gap: 50px;
     justify-content: space-evenly;

@@ -8,21 +8,21 @@ export function Main({ onAdd }) {
   const [quantity, setQuantity] = useState(1)
 
   const handleIncrease = function () {
-    setQuantity(q => q + 1)
+    setQuantity((q) => q + 1)
   }
 
   const handleDecrease = function () {
     if (quantity < 1) {
       setQuantity(0)
     } else {
-      setQuantity(q => q - 1)
+      setQuantity((q) => q - 1)
     }
   }
 
   const handleAdd = function () {
     onAdd({
       index: id++,
-      quantity
+      quantity,
     })
   }
 
@@ -30,7 +30,7 @@ export function Main({ onAdd }) {
     <main>
       <div className="product">
         <div className="product-slide">
-          <Slide onClick={() => setIsClose(false)} incrementer />
+          <Slide onClick={() => setIsClose(false)} />
           {!isClose && (
             <div className="product-slide__second">
               <Slide onClose={() => setIsClose(true)} close incrementer />
@@ -54,11 +54,17 @@ export function Main({ onAdd }) {
           </div>
           <div className="product-btns">
             <div className="product-quantity">
-              <span onClick={handleDecrease} className="product-quantity__action">
+              <span
+                onClick={handleDecrease}
+                className="product-quantity__action"
+              >
                 <img src="images/icon-minus.svg" alt="" />
               </span>
               <span className="product-quantity__number">{quantity}</span>
-              <span onClick={handleIncrease} className="product-quantity__action">
+              <span
+                onClick={handleIncrease}
+                className="product-quantity__action"
+              >
                 <img src="images/icon-plus.svg" alt="" />
               </span>
             </div>
