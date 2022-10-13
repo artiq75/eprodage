@@ -8,9 +8,9 @@ export function Slide({ onClose, onClick, close, incrementer }) {
   const thumbnails = useRef([])
 
   useEffect(() => {
-    thumbnails.current.forEach(thumbnail => {
+    thumbnails.current.forEach((thumbnail) => {
       thumbnail.addEventListener('click', onClick)
-    });
+    })
   }, [thumbnails.current, onClick])
 
   useEffect(() => {
@@ -78,8 +78,19 @@ export function Slide({ onClose, onClick, close, incrementer }) {
         </div>
       )}
       <div className="slide-front">
-        <div className={`slide-btn next ${incrementer ? 'reveal' : ''}`} onClick={handleNext}>
-          <img src="images/icon-next.svg" alt="" />
+        <div
+          className={`slide-btn next ${incrementer ? 'reveal' : ''}`}
+          onClick={handleNext}
+        >
+          <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m2 1 8 8-8 8"
+              stroke="currentColor"
+              stroke-width="3"
+              fill="none"
+              fill-rule="evenodd"
+            />
+          </svg>
         </div>
         <div ref={imgsRef} className="slide-front__imgs">
           <img
@@ -107,8 +118,19 @@ export function Slide({ onClose, onClick, close, incrementer }) {
             alt=""
           />
         </div>
-        <div className={`slide-btn back ${incrementer ? 'reveal' : ''}`} onClick={handleBack}>
-          <img src="images/icon-previous.svg" alt="" />
+        <div
+          className={`slide-btn back ${incrementer ? 'reveal' : ''}`}
+          onClick={handleBack}
+        >
+          <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M11 1 3 9l8 8"
+              stroke="currentColor"
+              stroke-width="3"
+              fill="none"
+              fill-rule="evenodd"
+            />
+          </svg>
         </div>
       </div>
       <div className="slide-thumbnails" ref={thumbnailsRef}>
@@ -119,6 +141,7 @@ export function Slide({ onClose, onClick, close, incrementer }) {
             height={176}
             alt=""
           />
+          <div className="inner"></div>
         </div>
         <div className="slide-thumbnails__img">
           <img
@@ -127,6 +150,7 @@ export function Slide({ onClose, onClick, close, incrementer }) {
             height={176}
             alt=""
           />
+          <div className="inner"></div>
         </div>
         <div className="slide-thumbnails__img">
           <img
@@ -135,6 +159,7 @@ export function Slide({ onClose, onClick, close, incrementer }) {
             height={176}
             alt=""
           />
+          <div className="inner"></div>
         </div>
         <div className="slide-thumbnails__img">
           <img
@@ -143,6 +168,7 @@ export function Slide({ onClose, onClick, close, incrementer }) {
             height={176}
             alt=""
           />
+          <div className="inner"></div>
         </div>
       </div>
     </div>
